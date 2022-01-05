@@ -7,7 +7,6 @@ import Transactions from "./components/Transactions";
 import AddTransaction from "./components/AddTransaction";
 
 import {
-  TransactionContext,
   TransactionProvider,
 } from "./context/TransactionContext";
 

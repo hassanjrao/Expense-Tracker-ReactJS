@@ -5,18 +5,20 @@ export default function AddTransaction() {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
-  const [transactions, setTransactions]=useContext(TransactionContext)
+  const { addTransaction } = useContext(TransactionContext);
 
-  const handleFromSubmit = (e)=>{
+  const handleFromSubmit = (e) => {
     e.preventDefault();
-    setTransactions(
-        [...transactions,{"id":Math.floor(Math.random()*1000000),"text":text,"amount": parseFloat(amount)}]
     
-    )
+    addTransaction({
+      id: Math.floor(Math.random() * 100000000),
+      text,
+      amount: +amount,
+    });
+
     setText("");
     setAmount(0);
-
-  }
+  };
 
   return (
     <div>
@@ -46,11 +48,12 @@ export default function AddTransaction() {
             onChange={(e) => {
               setAmount(e.target.value);
             }}
-            
             placeholder="Enter amount..."
           />
         </div>
-        <button type="submit" className="btn">Add transaction</button>
+        <button type="submit" className="btn">
+          Add transaction
+        </button>
       </form>
     </div>
   );

@@ -3,7 +3,7 @@ import { TransactionContext } from "../context/TransactionContext";
 import RemoveIncomeOrExpense from "./RemoveIncomeOrExpense";
 
 export default function TransactionList(props) {
-  const [transactions, setTransactions] = useContext(TransactionContext);
+  const {transactions} = useContext(TransactionContext);
 
   return (
     <div>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { TransactionContext } from "../context/TransactionContext";
 
 export default function IncomeExpenses() {
-  const [transactions, setTransactions] = useContext(TransactionContext);
+  const {transactions} = useContext(TransactionContext);
 
   let amounts = transactions.map((transaction) => transaction.amount);
   let income = 0;

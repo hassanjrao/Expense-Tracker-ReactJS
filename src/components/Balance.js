@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { TransactionContext } from "../context/TransactionContext";
 
 const Balance=()=>{
-    const [transactions, setTransactions]=useContext(TransactionContext)
+    const {transactions}=useContext(TransactionContext)
 
    
     const amounts=transactions.map(transaction=>transaction.amount)

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from "react";
+import React, { createContext, useReducer } from "react";
 import { AppReducer } from "./AppReducer";
 
 export const TransactionContext = createContext();
@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const TransactionProvider = (props) => {
-  // const [transactions, setTransactions] = useState(transactionList);
+
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
 

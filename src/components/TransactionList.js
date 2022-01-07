@@ -3,7 +3,7 @@ import { TransactionContext } from "../context/TransactionContext";
 import RemoveIncomeOrExpense from "./RemoveIncomeOrExpense";
 import Loader from "react-loader-spinner";
 
-export default function TransactionList(props) {
+export default function TransactionList() {
   const { transactions, getTransactions, loading } =
     useContext(TransactionContext);
 

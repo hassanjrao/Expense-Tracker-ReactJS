@@ -5,10 +5,8 @@ import Balance from "./components/Balance";
 import IncomeExpenses from "./components/IncomeExpenses";
 import Transactions from "./components/Transactions";
 import AddTransaction from "./components/AddTransaction";
-
-import {
-  TransactionProvider,
-} from "./context/TransactionContext";
+import React from "react";
+import { TransactionProvider } from "./context/TransactionContext";
 
 function App() {
   return (

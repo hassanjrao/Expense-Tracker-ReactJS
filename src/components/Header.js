@@ -1,7 +1,8 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { TransactionContext } from "../context/TransactionContext";
 
 const Header = () => {
+
     return(
         <h2>
             Expense Tracker With Context Api

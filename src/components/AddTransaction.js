@@ -5,19 +5,33 @@ export default function AddTransaction() {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
 
-  const { addTransaction } = useContext(TransactionContext);
+  const [errors, setError] = useState({});
+
+  const { addTransaction,loading } = useContext(TransactionContext);
 
   const handleFromSubmit = (e) => {
     e.preventDefault();
-    
-    addTransaction({
-      id: Math.floor(Math.random() * 100000000),
-      text,
-      amount: +amount,
-    });
 
-    setText("");
-    setAmount(0);
+    if (text === "" && (amount === "" || amount === 0)) {
+      setError({
+        text: "Text should not be empty",
+        amount: "Amount should not be 0 or empty",
+      });
+    } else if (text === "") {
+      setError({ ...errors, text: "Text should not be empty" });
+    } else if (amount === "" || amount === 0) {
+      setError({ ...errors, amount: "Amount should not be 0 or empty" });
+    } else {
+
+      addTransaction({
+        id: Math.floor(Math.random() * 100000000),
+        text,
+        amount: +amount,
+      });
+
+      setText("");
+      setAmount(0);
+    }
   };
 
   return (
@@ -31,10 +45,12 @@ export default function AddTransaction() {
             value={text}
             onChange={(e) => {
               setText(e.target.value);
+              setError({...errors,text:""});
             }}
             id="text"
             placeholder="Enter text..."
           />
+          <div className="error">{errors.text}</div>
         </div>
         <div className="form-control">
           <label htmlFor="amount">
@@ -47,9 +63,11 @@ export default function AddTransaction() {
             value={amount}
             onChange={(e) => {
               setAmount(e.target.value);
+              setError({...errors,amount:""});
             }}
             placeholder="Enter amount..."
           />
+          <div className="error">{errors.amount}</div>
         </div>
         <button type="submit" className="btn">
           Add transaction
